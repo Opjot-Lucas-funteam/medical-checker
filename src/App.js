@@ -37,6 +37,7 @@ class App extends Component {
     });
   }
 
+  //--------------------Event Handlers--------------------------------//
   handleChange =(e)=>{
     this.setState({
       userInput:e.target.value,
@@ -48,7 +49,7 @@ class App extends Component {
       alert("please enter info")
     } else {
       const dbRef = firebase.database().ref()
-      dbRef.push(this.state.userInput)
+      // dbRef.push(this.state.userInput)
 
       const medObject={
         medName:userInput.medName,
@@ -56,7 +57,7 @@ class App extends Component {
         medTime:userInput.medTime
       }
 
-      dbRef.push(medObject);
+      dbRef.push(this.state.userInput);
 
       this.setState({
         medName: userInput.medName,
@@ -64,8 +65,12 @@ class App extends Component {
         medTime: userInput.medTime
       })
     }
+    // addMed = (medKey) => {
+    //   const dbRef = firebase.database().ref()
+    //   dbRef.child(medKey).push();
+    // }
   }
-
+//----------------------------Render--------------------------------------//
   render() {
     return (
         <section>

@@ -5,9 +5,9 @@ class Form extends Component {
         return (
             <div>
                 <form action="submit">
-                    <input type="text" placeholder="Medication"/>
-                    <input type="text" placeholder="Day"/>
-                    <input type="text" placeholder="Time"/>
+                    <input type="text" placeholder="Medication" id="medName" name="medName"/>
+                    <input type="text" placeholder="Day" id="medDay" name="medDay"/>
+                    <input type="text" placeholder="Time" id="medTime" name="medTime"/>
                     <input type="submit" value="submit"/>
                 </form>
             </div>
