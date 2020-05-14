@@ -5,50 +5,78 @@ class Form extends Component {
     constructor() {
         super();
         this.state = {
-            medications:[],
-            med: '',
-            day: '',
-            time: ''
+            medications:{
+                medName: '',
+                day:'',
+                time: ''
+            },
+            
         }
+        
+    }
+    componentDidMount (){
         const dbRef = firebase.database().ref();
+        console.log(dbRef)
         dbRef.on('value', (response) => {
+            
+            const dataFromDb=response.val();
+            console.log(dataFromDb);
             const newState = [];
-            const data = response.val();
-            for (let key in data) {
-                newState.push(data[key]);
+            for (let key in dataFromDb) {
+                newState.push(dataFromDb[key]);
             }
             this.setState({
                 medications: newState,
-                day: newState,
-                time: newState
+                medName:this.state.medName,
+                day: this.state.day,
+                time: this.state.time
             });
         });
+    
     }
+        
+   
+  
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    handleClick(event) {
+    handleClick = (event) => {
         event.preventDefault();
         const dbRef = firebase.database().ref();
-        dbRef.push(this.med.state.userInput);
+        dbRef.push(this.state);
         this.setState({ userInput: "" });
+        // console.log(this.state)
         // this.time.setState({ userInput: "" });
         // this.day.setState({ userInput: "" });
     }
     render() {
+        // const { key, medicine } = this.props.medications[0];
+        // console.log(key, medicine)
         return (
             <div>
                 <form action="submit">
-                    <input type="text" placeholder="Medication" id="med" name="med" onChange={this.handleChange} value={this.state.med}/>
+                    <input type="text" placeholder="Medication" id="medName" name="medName" onChange={this.handleChange} value={this.state.medName}/>
                     <input type="text" placeholder="Day" id="day" name="day" onChange={this.handleChange} value={this.state.day}/>
                     <input type="text" placeholder="Time" id="time" name="time" onChange={this.handleChange} value={this.state.time}/>
                     <input type="submit" value="submit" onClick={this.handleClick}/>
                 </form>
-                {this.state.medications.map((med) => {
-                    return <li><p>{med}</p></li>
-                })}
+                {/* {this.state.medications.map((medications) => { */}
+                    {/* <ul> */}
+                        {/* {Object.keys(medications).map((med, index) => <li key={index}>{medications} : {medications[med]}</li>)} */}
+                        {/* <li>
+                            <h3>
+                                {medicine.medName} : {medicine.day} , {medicine.time}
+                                
+                            </h3>
+
+                        </li>
+                        
+                    </ul> */}
+                {/* })}  */}
+                    {/* <p>{this.state.medications}</p> */}
+                
             </div>
         );
     }
