@@ -6,19 +6,30 @@ import List from './List';
 
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     medications: [],
-  //     day: [],
-  //     time: []
-  //   }
-  // }
+  constructor() {
+    super();
+    this.state = {
+      medications: {},
+
+    }
+  }
+
+  displayInfo = (key) => {
+    const medToShow = this.state.newMed.filter(item => item.key === key)
+    this.setState({
+      showDisplayInfo: true,
+      showMed: medToShow,
+    })
+  }
   render() {
     return (
       <div>
         <Form />
-      
+        {this.state.showDisplayInfo ? 
+          <List 
+          medProp={this.state.showMed}
+          />
+          : null}
         {/* <ul>
           
           {this.state.medications.map((med) => {

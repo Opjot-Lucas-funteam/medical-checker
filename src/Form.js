@@ -52,8 +52,6 @@ class Form extends Component {
         // this.day.setState({ userInput: "" });
     }
     render() {
-        // const { key, medicine } = this.props.medications[0];
-        // console.log(key, medicine)
         return (
             <div>
                 <form action="submit">
@@ -62,20 +60,6 @@ class Form extends Component {
                     <input type="text" placeholder="Time" id="time" name="time" onChange={this.handleChange} value={this.state.time}/>
                     <input type="submit" value="submit" onClick={this.handleClick}/>
                 </form>
-                {/* {this.state.medications.map((medications) => { */}
-                    {/* <ul> */}
-                        {/* {Object.keys(medications).map((med, index) => <li key={index}>{medications} : {medications[med]}</li>)} */}
-                        {/* <li>
-                            <h3>
-                                {medicine.medName} : {medicine.day} , {medicine.time}
-                                
-                            </h3>
-
-                        </li>
-                        
-                    </ul> */}
-                {/* })}  */}
-                    {/* <p>{this.state.medications}</p> */}
                 
             </div>
         );
