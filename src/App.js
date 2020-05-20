@@ -24,11 +24,10 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header />
         <Form />
         {this.state.showDisplayInfo ? 
-          <List 
-          medProp={this.state.showMed}
-          />
+          <List medProp={this.state.showMed} />
           : null}
         {/* <ul>
           
