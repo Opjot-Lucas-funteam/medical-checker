@@ -5,36 +5,14 @@ class Form extends Component {
     constructor() {
         super();
         this.state = {
-            // medications:{
-                medName: '',
-                day:'',
-                time: ''
-            // },
+            medications:{
+            medName:"",
+            time:"",
+            day:"",
+            },
             
         }
-        
     }
-    // componentDidMount (){
-    //     const dbRef = firebase.database().ref();
-    //     console.log(dbRef)
-    //     dbRef.on('value', (response) => {
-            
-    //         const dataFromDb=response.val();
-    //         console.log(dataFromDb);
-    //         const newState = [];
-    //         for (let key in dataFromDb) {
-    //             newState.push(dataFromDb[key]);
-    //         }
-    //         this.setState({
-    //             // medications: newState,
-    //             medName:this.state.medName,
-    //             day: this.state.day,
-    //             time: this.state.time
-    //         });
-    //     });
-    
-    // }
-        
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -44,21 +22,20 @@ class Form extends Component {
         event.preventDefault();
         const dbRef = firebase.database().ref();
         dbRef.push(this.state);
-        this.setState({ userInput: "" });
-        // console.log(this.state)
-        // this.time.setState({ userInput: "" });
-        // this.day.setState({ userInput: "" });
+        this.setState({medName: ""})
+        this.setState({day:""})
+        this.setState({time:""})
+        
     }
     render() {
         return (
             <div>
-                <form action="submit">
+                <form id="medForm" action="submit">
                     <input type="text" placeholder="Medication" id="medName" name="medName" onChange={this.handleChange} value={this.state.medName}/>
                     <input type="text" placeholder="Day" id="day" name="day" onChange={this.handleChange} value={this.state.day}/>
                     <input type="text" placeholder="Time" id="time" name="time" onChange={this.handleChange} value={this.state.time}/>
-                    <input type="submit" value="submit" onClick={this.handleClick}/>
+                    <input type="submit"  value="submit" onClick={this.handleClick}/>
                 </form>
-                
             </div>
         );
     }

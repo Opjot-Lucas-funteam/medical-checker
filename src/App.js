@@ -27,14 +27,8 @@ class App extends Component {
         <Header />
         <Form />
         {this.state.showDisplayInfo ? 
-          <List medProp={this.state.showMed} />
+          <List />
           : null}
-        {/* <ul>
-          
-          {this.state.medications.map((med) => {
-            return <li><p>{med}</p></li>
-          })}
-        </ul> */}
       </div>
     )
   }
