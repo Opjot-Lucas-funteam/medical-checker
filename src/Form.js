@@ -5,35 +5,35 @@ class Form extends Component {
     constructor() {
         super();
         this.state = {
-            medications:{
+            // medications:{
                 medName: '',
                 day:'',
                 time: ''
-            },
+            // },
             
         }
         
     }
-    componentDidMount (){
-        const dbRef = firebase.database().ref();
-        console.log(dbRef)
-        dbRef.on('value', (response) => {
+    // componentDidMount (){
+    //     const dbRef = firebase.database().ref();
+    //     console.log(dbRef)
+    //     dbRef.on('value', (response) => {
             
-            const dataFromDb=response.val();
-            console.log(dataFromDb);
-            const newState = [];
-            for (let key in dataFromDb) {
-                newState.push(dataFromDb[key]);
-            }
-            this.setState({
-                medications: newState,
-                medName:this.state.medName,
-                day: this.state.day,
-                time: this.state.time
-            });
-        });
+    //         const dataFromDb=response.val();
+    //         console.log(dataFromDb);
+    //         const newState = [];
+    //         for (let key in dataFromDb) {
+    //             newState.push(dataFromDb[key]);
+    //         }
+    //         this.setState({
+    //             // medications: newState,
+    //             medName:this.state.medName,
+    //             day: this.state.day,
+    //             time: this.state.time
+    //         });
+    //     });
     
-    }
+    // }
         
 
     handleChange = (e) => {
