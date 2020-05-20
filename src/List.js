@@ -14,19 +14,19 @@ class List extends Component {
 
             <div>
                 <ul>
-                     {/* {this.state.medications.map((medications) => { */}
-                          {/* { */}
-                             {/* Object.keys(medications).map((med, index) => { */}
-                                 {/* return <li key={index}>{medications} : {medications[med]}</li> */}
-                             {/* }, */}
+                     {this.state.medications.map((medicine) => {
+                          {
+                             Object.keys(medicine).map((med, index) => {
+                                 return <li key={index}>{medicine} : {medicine[med]}</li>
+                             },
                                 <li>
                                     <h3>
                                         {medicine.medName} : {medicine.day} , {medicine.time}
                                     </h3>
                                 </li>
-                             {/* )
+                             )
                          }
-                     } */}
+                     }
                     )}
                 </ul>
                 {/* )}  */}
