@@ -12,12 +12,20 @@ class Form extends Component {
             },
             
         }
+// console.log(this.medications)
     }
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    sortDateOnClick=(med1, med2)=>{
+        
+        if(med1 > med2) return(-1);
+        else if(med1 < med2) return(1);
+        return(0);
+        
+    }
     handleClick = (event) => {
         event.preventDefault();
         const dbRef = firebase.database().ref();
@@ -25,7 +33,9 @@ class Form extends Component {
         this.setState({medName: ""})
         this.setState({day:""})
         this.setState({time:""})
-        
+        // console.log(sortDateOnClick, "hi");
+        this.sortDateOnClick();
+        // console.log(medications)
     }
     render() {
         return (
@@ -98,7 +108,7 @@ class Form extends Component {
                         <option value="11:30 PM">11:30 PM</option>
                     </select>
                     {/* <input type="text" placeholder="Time" id="time" name="time" onChange={this.handleChange} value={this.state.time}/> */}
-                    <input type="submit"  value="submit" onClick={this.handleClick}/>
+                    <input type="submit"  value="submit" onClick={this.handleClick} />
                 </form>
             </div>
         );

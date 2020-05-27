@@ -20,8 +20,12 @@ class List extends Component {
             this.setState({
                 medications: newState,
             });
+        console.log(this.state.medications)
         });
+        
     }
+
+    
 
     render() {
         return (
