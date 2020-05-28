@@ -1,13 +1,38 @@
 import React, { Component } from 'react';
-import firebase from 'firebase'
+import firebase from 'firebase';
+import DataGrid from './DataGrid';
+
+
+//-----------------all comments here are for React-DataGrid------//
+const columns = [
+    { key: "id", name: "ID", editable: true },
+    { key: "title", name: "Title", editable: true },
+    { key: "complete", name: "Complete", editable: true }
+];
+
+const rows = [
+    { id: 0, title: "Task 1", complete: 20 },
+    { id: 1, title: "Task 2", complete: 40 },
+    { id: 2, title: "Task 3", complete: 60 }
+];
+//
 class List extends Component {
     constructor(){
         super();
         this.state={
             medications:[],
+            rows
         }
     }
-
+    onGridRowsUpdated = ({ fromRow, toRow, updated }) => {
+        this.setState(state => {
+            const rows = state.rows.slice();
+            for (let i = fromRow; i <= toRow; i++) {
+                rows[i] = { ...rows[i], ...updated };
+            }
+            return { rows };
+        });
+    };
     componentDidMount (){
         const dbRef = firebase.database().ref();
         dbRef.on('value', (response) => {
@@ -32,6 +57,13 @@ class List extends Component {
         return (
             <div>
                 <ul>
+                    <DataGrid
+                        columns={columns}
+                        rowGetter={i => this.state.rows[i]}
+                        rowsCount={3}
+                        // onGridRowsUpdated={this.onGridRowsUpdated}
+                        // enableCellSelect={true}
+                    />
                     {this.state.medications.map((medicine) => {
                     return(
                         <li>
