@@ -4,17 +4,20 @@ import DataGrid from './DataGrid';
 
 
 //-----------------all comments here are for React-DataGrid------//
-const columns = [
-    { key: "id", name: "ID", editable: true },
-    { key: "title", name: "Title", editable: true },
-    { key: "complete", name: "Complete", editable: true }
-];
 
 const rows = [
-    { id: 0, title: "Task 1", complete: 20 },
-    { id: 1, title: "Task 2", complete: 40 },
-    { id: 2, title: "Task 3", complete: 60 }
+    { day: 1, medName: "Task 1", time: 20 },
+    { day: 1, medName: "Task 2", time: 40 },
+    { day: 2, medName: "Task 3", time: 60 }
 ];
+
+const columns = [
+    { key: "day", name: "Day", editable: true },
+    { key: "medName", name: "Medications", editable: true },
+    { key: "time", name: "Time", editable: true }
+];
+
+
 //
 class List extends Component {
     constructor(){
@@ -48,6 +51,7 @@ class List extends Component {
         console.log(this.state.medications)
         });
         
+        
     }
 
 
@@ -58,7 +62,7 @@ class List extends Component {
             <div>
                 <ul>
                     <DataGrid
-                        columns={columns}
+                        columns={columns} 
                         rowGetter={i => this.state.rows[i]}
                         rowsCount={3}
                         // onGridRowsUpdated={this.onGridRowsUpdated}
