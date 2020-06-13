@@ -1,39 +1,39 @@
-import React from 'react';
-import ReactDataGrid from 'react-data-grid';
-// import 'react-data-grid/dist/react-data-grid.css';
+// import React from 'react';
+// import ReactDataGrid from 'react-data-grid';
+// // import 'react-data-grid/dist/react-data-grid.css';
 
-const columns = [
-    { key: 'id', name: 'ID' },
-    { key: 'title', name: 'Title' },
-    { key: 'count', name: 'Count' }];
+// const columns = [
+//     { key: 'id', name: 'ID' },
+//     { key: 'title', name: 'Title' },
+//     { key: 'count', name: 'Count' }];
 
-const rows = [{ id: 0, title: 'row1', count: 20 }, { id: 1, title: 'row1', count: 40 }, { id: 2, title: 'row1', count: 60 }];
+// const rows = [{ id: 0, title: 'row1', count: 20 }, { id: 1, title: 'row1', count: 40 }, { id: 2, title: 'row1', count: 60 }];
 
-function HelloWorld() {
-    console.log("heyheyhey")
-}
-HelloWorld();
+// function HelloWorld() {
+//     console.log("heyheyhey")
+// }
+// HelloWorld();
 
-const DataGrid = (props) => {
+// const DataGrid = (props) => {
     
     
-    console.log(props);
-    return(
-        <ReactDataGrid
-            columns={props.columns}
-            rowGetter={props.rowGetter}
-            rowsCount={props.rowsCount}
-            // enableCellSelect={props.enableCellSelect}
-            // onGridRowsUpdated={props.onGridRowsUpdated}
-            />
+//     console.log(props);
+//     return(
+//         <ReactDataGrid
+//             columns={props.columns}
+//             rowGetter={props.rowGetter}
+//             rowsCount={props.rowsCount}
+//             // enableCellSelect={props.enableCellSelect}
+//             // onGridRowsUpdated={props.onGridRowsUpdated}
+//             />
         
-    )
+//     )
         
     
-}
+// }
 
 
-export default DataGrid;
+// export default DataGrid;
 
 
 

@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 
+const sorter = {
+    // "sunday": 0, // << if sunday is first day of week
+    "monday": 1,
+    "tuesday": 2,
+    "wednesday": 3,
+    "thursday": 4,
+    "friday": 5,
+    "saturday": 6,
+    "sunday": 7
+}
+
 class Form extends Component {
     constructor() {
         super();
@@ -13,17 +24,19 @@ class Form extends Component {
             
         }
 // console.log(this.medications)
+
     }
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
+    
 
     sortDateOnClick=(med1, med2)=>{
         
-        if(med1 > med2) return(-1);
-        else if(med1 < med2) return(1);
-        return(0);
+        let day1 = med1.day.toLowerCase();
+        let day2 = med2.day.toLowerCase();
+        return sorter[day1] - sorter[day2];
         
     }
     handleClick = (event) => {
@@ -34,7 +47,7 @@ class Form extends Component {
         this.setState({day:""})
         this.setState({time:""})
         // console.log(sortDateOnClick, "hi");
-        this.sortDateOnClick();
+        this.sortDateOnClick({day:""});
         // console.log(medications)
     }
     render() {
