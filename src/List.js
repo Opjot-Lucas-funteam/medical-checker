@@ -5,10 +5,10 @@ import DataGrid from './DataGrid';
 
 //-----------------all comments here are for React-DataGrid------//
 const columns = [
-    { key: "id", name: "ID", editable: true },
-    { key: "title", name: "Title", editable: true },
-    { key: "complete", name: "Complete", editable: true }
-];
+    { key: "id", name: "Medication", editable: true },
+    { key: "title", name: "Day", editable: true },
+    { key: "complete", name: "Time", editable: true }
+]; 
 
 const rows = [
     { id: 0, title: "Task 1", complete: 20 },
@@ -16,6 +16,7 @@ const rows = [
     { id: 2, title: "Task 3", complete: 60 }
 ];
 //
+
 class List extends Component {
     constructor(){
         super();
@@ -48,10 +49,21 @@ class List extends Component {
         console.log(this.state.medications)
         });
         
+        //-----------------all comments here are for React-DataGrid------//
+        const columns = [
+            { key: "id", name: "Medication", editable: true },
+            { key: "title", name: "Day", editable: true },
+            { key: "complete", name: "Time", editable: true }
+        ]; 
+
+        const rows = [
+            { id: 0, title: "Task 1", complete: 20 },
+            { id: 1, title: "Task 2", complete: 40 },
+            { id: 2, title: "Task 3", complete: 60 }
+        ];
+        //
     }
 
-
-    
 
     render() {
         return (
